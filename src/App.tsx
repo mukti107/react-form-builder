@@ -83,7 +83,7 @@ const schema: FormSchema = [
 
 function App() {
 
-  const [formID, setFromID] = useState()
+  const [formID, setFromID] = useState('')
 
   const [activeTab, setActiveTab] = useState('preview');
 
@@ -95,11 +95,17 @@ function App() {
 
   const saveFrom:MouseEventHandler<HTMLButtonElement>  = useCallback((e)=>{
 
+    //TODO: 1. Validate the form 
+
+    //DONE: 2. Create FormID
     if( !formID ){
       setFromID(uuidv4())
     }
 
-    console.log("Form ID", formID)
+    //TODO: 3. Save the from
+
+    // TODO: 4. On Succcess - Update the URL? 
+
 
   }, [formID]);
 
