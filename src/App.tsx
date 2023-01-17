@@ -7,6 +7,7 @@ import '../index.css';
 const fieldSchema: FormSchema = [
   {type: 'select', label: 'Type', name: 'type', options: [
     {label: 'Text', value: 'input'},
+    {label: 'Tag', value: 'tag'},
     {label: 'Select', value: 'select'},
     {label: 'Image select', value: 'image-select'},
     {label: 'Checkbox(True/False)', value: 'checkbox'},
@@ -42,11 +43,6 @@ const fieldSchema: FormSchema = [
       {type: 'input', label: 'Value', name: 'value'},
     ],
     visible: ['type', '=', 'image-select'],
-  },
-  {
-    type: 'tag',
-    name: 'tag',
-    label: 'Tag',
   }
 ];
 
