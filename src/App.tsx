@@ -1,9 +1,12 @@
 import { Formik } from 'formik'
 import {get} from 'lodash';
+import { v4 as uuidv4 } from 'uuid';
 import FormGenerator from './FormGenerator'
 import FormSchema from './types/FormSchema'
 import '../index.css';
 import { MouseEvent, MouseEventHandler, useCallback, useState } from 'react';
+import Header from './AppComponents/Header';
+
 
 const fieldSchema: FormSchema = [
   {type: 'select', label: 'Type', name: 'type', options: [
@@ -80,6 +83,8 @@ const schema: FormSchema = [
 
 function App() {
 
+  const [formID, setFromID] = useState('')
+
   const [activeTab, setActiveTab] = useState('preview');
 
   const activateTab: MouseEventHandler<HTMLAnchorElement> = useCallback((e)=>{
@@ -88,7 +93,25 @@ function App() {
     setActiveTab(tabToActivate);
   }, []);
 
+  const saveFrom:MouseEventHandler<HTMLButtonElement>  = useCallback((e)=>{
+
+    //TODO: 1. Validate the form 
+
+    //DONE: 2. Create FormID
+    if( !formID ){
+      setFromID(uuidv4())
+    }
+
+    //TODO: 3. Save the from
+
+    // TODO: 4. On Succcess - Update the URL? 
+
+
+  }, [formID]);
+
   return (
+    <>
+    <Header SaveForm={saveFrom} FormID={formID} />
     <div className="container">
       <Formik onSubmit={console.log} initialValues={{}}>
         {({values, setFieldValue})=>(<div className="container">
@@ -133,6 +156,7 @@ function App() {
         </div>)}
       </Formik>
     </div>
+    </>
   )
 }
 
