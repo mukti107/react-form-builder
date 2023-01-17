@@ -6,13 +6,13 @@
 
 <p>To use the form builder in your React project, you'll need to install it as a dependency:</p>
 
-<pre>npm install @evlop/react-form</pre>
+```npm install @evlop/react-form```
 
 <h2>Usage</h2>
 
 <p>To use the form builder, you'll first need to create a JSON schema that defines the fields and validation rules for your form. Once you have your schema, you can use the <code>FormBuilder</code> component to convert it into a form:</p>
 
-<pre>
+```
 import React from 'react';
 import FormBuilder from '@evlop/react-form';
 
@@ -46,11 +46,11 @@ function MyForm() {
 }
 
 export default MyForm;
-</pre>
+```
 
 <p>You can also pass a <code>handleSubmit</code> function to the <code>FormBuilder</code> component, which will be called when the form is submitted:</p>
 
-<pre>
+```
 function handleSubmit(values) {
   console.log(values);
 }
@@ -60,7 +60,7 @@ function MyForm() {
     <FormBuilder schema={schema} handleSubmit={handleSubmit} />
   );
 }
-</pre>
+```
 
 <h2>Customizing the Form</h2>
 
@@ -92,7 +92,7 @@ function MyForm() {
 
 <p>You can customize the error messages that are displayed when validation fails by passing a <code>messages</code> object to the <code>FormBuilder</code> component. The <code>messages</code> object should have the same structure as the schema, with a <code>messages</code> property for each field that has validation rules.</p>
 
-<pre>
+```
 const messages = {
   name: {
     required: "Name is required"
@@ -104,5 +104,5 @@ function MyForm() {
     <FormBuilder schema={schema} messages={messages} />
   );
 }
-</pre>
+```
 
