@@ -3,6 +3,7 @@ import {get} from 'lodash';
 import FormGenerator from './FormGenerator'
 import FormSchema from './types/FormSchema'
 import '../index.css';
+import { MouseEvent, MouseEventHandler, useCallback, useState } from 'react';
 
 const fieldSchema: FormSchema = [
   {type: 'select', label: 'Type', name: 'type', options: [
@@ -78,23 +79,54 @@ const schema: FormSchema = [
 ]
 
 function App() {
+
+  const [activeTab, setActiveTab] = useState('preview');
+
+  const activateTab: MouseEventHandler<HTMLAnchorElement> = useCallback((e)=>{
+    e.preventDefault();
+    const tabToActivate = (e.target as any).getAttribute('href')?.replace('#', '') || 'json-schema';
+    setActiveTab(tabToActivate);
+  }, []);
+
   return (
-    <div className="App">
+    <div className="container">
       <Formik onSubmit={console.log} initialValues={{}}>
-        {({values, isValid})=>(<div className="container">
+        {({values, setFieldValue})=>(<div className="container">
           <form >
           <div className='row'>
             <div className='col'>
               <FormGenerator name="form" schema={schema} />
-              <pre>
-                {JSON.stringify(get(values, ['form', 'schema']), null, 2)}
-              </pre>
             </div>
             <div className='col'>
-              <FormGenerator name="form.values" schema={get(values, ['form', 'schema'])} />
+              <div className='sticky-top'>
+                <ul className="nav nav-pills mb-3" role="tablist">
+                  <li className="nav-item">
+                    <a onClick={activateTab} className={`nav-link ${activeTab === 'preview' && 'active'}`} id="preview-tab" data-toggle="tab" href="#preview" role="tab" aria-controls="preview" aria-selected="false">Preview</a>
+                  </li>
+                  <li className="nav-item">
+                    <a onClick={activateTab} className={`nav-link ${activeTab === 'json-schema' && 'active'}`} id="json-schema-tab" data-toggle="tab" href="#json-schema" role="tab" aria-controls="json-schema" aria-selected="true">JSON Schema</a>
+                  </li>
+                </ul>
+                <div className="tab-content">
+                  <div className={`tab-pane fade ${activeTab === 'json-schema' && `show active`}`} id="json-schema" role="tabpanel" aria-labelledby="json-schema-tab">
+                  <textarea onChange={(e)=>{
+                  try{
+                  const schema = JSON.parse(e.target.value);
+                  console.log(schema)
+                  setFieldValue('form.schema', schema);
+                  }catch(e){
+                    console.error(e);
+                  }
+                }} className='form-control' rows={8} value={JSON.stringify(get(values, ['form', 'schema']), null, 2)} />
+                  </div>
+                  <div className={`tab-pane fade ${activeTab === 'preview' && `show active`}`} id="preview" role="tabpanel" aria-labelledby="preview-tab">
+                    <FormGenerator name="form.values" schema={get(values, ['form', 'schema'])} />
+                  </div>
+                </div>
               <pre>
                 {JSON.stringify(get(values, ['form', 'values']), null, 2)}
               </pre>
+              </div>
             </div>
           </div>
           </form>
