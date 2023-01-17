@@ -1,14 +1,22 @@
-import React, { KeyboardEventHandler, useCallback } from "react";
+import React, { KeyboardEventHandler, useCallback, useEffect } from "react";
 import { useField } from "formik";
 
 const TagInput = ({ ...props }) => {
-  const [field, meta] = useField(props.field.name);
+  const [field, meta, { setValue }] = useField(props.field.name);
   const [tags, setTags] = React.useState<string[]>([]);
   const [newTag, setNewTag] = React.useState("");
+
+  useEffect(()=>{
+    if(Array.isArray(field.value))
+    {
+        setTags(field.value);
+    }
+  }, [field.value]);
 
   const addTag = useCallback(() => {
     if (newTag.length > 0 && !tags.includes(newTag)) {
         setTags([...tags, newTag]);
+        setValue([...tags, newTag]);
         setNewTag("");
     }
     }, [newTag, tags]);
