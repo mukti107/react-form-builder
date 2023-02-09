@@ -1,7 +1,7 @@
 import { Formik } from 'formik'
 import {get} from 'lodash';
-import FormGenerator from './FormGenerator'
-import FormSchema from './types/FormSchema'
+import FormGenerator from '../lib'
+import FormSchema from '../lib/types/FormSchema'
 import '../index.css';
 import { MouseEvent, MouseEventHandler, useCallback, useState } from 'react';
 

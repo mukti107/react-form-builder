@@ -1,4 +1,4 @@
-<h1>@evlop/react-form</h1>
+<h1>@evlop/react-schema-form</h1>
 
 <p>This project provides a form builder for React that allows you to convert a JSON schema into a form. The form builder uses the JSON schema to automatically generate form fields and validation rules, making it easy to create forms with minimal code.</p>
 
@@ -6,7 +6,7 @@
 
 <p>To use the form builder in your React project, you'll need to install it as a dependency:</p>
 
-```npm install @evlop/react-form```
+```npm install @evlop/react-schema-form```
 
 <h2>Usage</h2>
 
@@ -14,7 +14,7 @@
 
 ```
 import React from 'react';
-import FormBuilder from '@evlop/react-form';
+import FormBuilder from '@evlop/react-schema-form';
 
 const schema = {
   fields: [

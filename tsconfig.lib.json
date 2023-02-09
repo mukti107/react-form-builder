@@ -13,9 +13,11 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "noEmit": false,
+    "outDir": "dist-lib",
+    "jsx": "react-jsx",
+    "declaration": true
   },
-  "include": ["src", "lib/FormGenerator"],
+  "include": ["lib"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
