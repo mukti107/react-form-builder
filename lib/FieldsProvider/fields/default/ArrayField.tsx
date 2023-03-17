@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 import {get, map, toPath, random} from 'lodash';
 import {FieldArray, FieldArrayRenderProps} from 'formik';
-import FormSchema, { ArrayFieldSchema } from '../../types/FormSchema';
-import FormGenerator from '..';
+import FormSchema, { ArrayFieldSchema } from '../../../types/FormSchema';
+import FormGenerator from '../../..';
 
 const render = (schema: FormSchema, options: Partial<ArrayFieldSchema>)=>({form: {values}, name, push, remove}: FieldArrayRenderProps) => {
     const fieldValues: any[] = get(values, name, [])

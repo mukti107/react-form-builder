@@ -16,6 +16,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "lib/FormGenerator"],
+  "include": ["src", "lib/FormGenerator", "lib/FieldsProvider/fields", "lib/FormGenerator.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

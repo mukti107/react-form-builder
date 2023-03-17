@@ -1,7 +1,7 @@
 import { FieldProps } from 'formik';
 import { get, isEmpty } from 'lodash';
 import React from 'react';
-import { InputFieldSchema } from '../../types/FormSchema';
+import { InputFieldSchema } from '../../../types/FormSchema';
 
 
 const InputField: React.FunctionComponent<InputFieldSchema&FieldProps> = (props) => {

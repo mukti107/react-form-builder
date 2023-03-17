@@ -1,7 +1,7 @@
 import { FieldProps } from 'formik';
 import { includes, map, union, without } from 'lodash';
 import React, { ChangeEventHandler, useCallback } from 'react';
-import { CheckboxFieldSchema } from '../../types/FormSchema';
+import { CheckboxFieldSchema } from '../../../types/FormSchema';
 
 
 const CheckboxField: React.FunctionComponent<CheckboxFieldSchema & FieldProps> = (props) => {

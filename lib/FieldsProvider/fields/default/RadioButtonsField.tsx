@@ -1,6 +1,6 @@
 import React from 'react';
 import {map} from 'lodash';
-import { RadioButtonsFieldSchema, SelectFieldSchema } from '../../types/FormSchema';
+import { RadioButtonsFieldSchema, SelectFieldSchema } from '../../../types/FormSchema';
 import { FieldProps } from 'formik';
 
 

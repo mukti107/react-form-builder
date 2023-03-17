@@ -1,7 +1,7 @@
 import { FieldProps } from 'formik';
 import React from 'react';
-import FormGenerator from '..';
-import { SectionFieldSchema } from '../../types/FormSchema';
+import FormGenerator from '../../..';
+import { SectionFieldSchema } from '../../../types/FormSchema';
 
 
 const SectionField: React.FunctionComponent<SectionFieldSchema & FieldProps> = (props) => {

@@ -1,5 +1,5 @@
 import React from "react";
-import { FieldSchema } from "../../types/FormSchema";
+import { Fields } from "../../../types/Fields";
 import ArrayField from "./ArrayField";
 import CheckboxField from "./Checkbox";
 import CheckboxesField from "./CheckboxesField";
@@ -11,7 +11,7 @@ import SectionField from "./SectionField";
 import SelectField from "./SelectField";
 import TagsInput from "./TagsInput";
 
-const fields: {[key: FieldSchema['type']]: React.FunctionComponent<any>} = {
+const fields: Fields = {
     array: ArrayField,
     section: SectionField,
     select: SelectField,

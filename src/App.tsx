@@ -1,9 +1,11 @@
 import { Formik } from 'formik'
 import {get} from 'lodash';
-import FormGenerator from '../lib'
+import {AppProvider} from '@shopify/polaris';
+import FormGenerator, { FieldsProvider } from '../lib'
 import FormSchema from '../lib/types/FormSchema'
 import '../index.css';
 import { MouseEvent, MouseEventHandler, useCallback, useState } from 'react';
+import polarisFields from '../lib/FieldsProvider/fields/polaris';
 
 const fieldSchema: FormSchema = [
   {type: 'select', label: 'Type', name: 'type', options: [
@@ -120,7 +122,11 @@ function App() {
                 }} className='form-control' rows={8} value={JSON.stringify(get(values, ['form', 'schema']), null, 2)} />
                   </div>
                   <div className={`tab-pane fade ${activeTab === 'preview' && `show active`}`} id="preview" role="tabpanel" aria-labelledby="preview-tab">
-                    <FormGenerator name="form.values" schema={get(values, ['form', 'schema'])} />
+                    <AppProvider i18n={{}}>
+                      <FieldsProvider fields={polarisFields}>
+                        <FormGenerator name="form.values" schema={get(values, ['form', 'schema'])} />
+                      </FieldsProvider>
+                    </AppProvider>
                   </div>
                 </div>
               <pre>

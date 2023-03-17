@@ -1,15 +1,16 @@
-import React, { useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { toPath, isEmpty, isBoolean, map, get, filter } from 'lodash';
 import { Field, useFormikContext } from 'formik';
-import FormSchema, { FieldName, FieldSchema } from '../types/FormSchema';
-import fields from './fields';
-import { checkCondition } from '../utils/condition-helper';
+import FormSchema, { FieldName, FieldSchema } from './types/FormSchema';
+import { checkCondition } from './utils/condition-helper';
+import FieldsContext from './FieldsProvider/FieldsContext';
 
 interface RenderFieldProp {
     parentPath?: string[];
     field: FieldSchema;
 }
 export const RenderField: React.FunctionComponent<RenderFieldProp> = ({field, parentPath})=>{
+    const fields = useContext(FieldsContext);
     const { type, name: fieldName, ...fieldProps } = field;
 
     const nameWithParent = [...(parentPath || []), ...toPath(fieldName)].join('.');

@@ -1,6 +1,6 @@
 import React, { ChangeEventHandler, useCallback } from 'react';
 import {map, union, without, includes} from 'lodash';
-import { RadioButtonsFieldSchema, SelectFieldSchema } from '../../types/FormSchema';
+import { RadioButtonsFieldSchema, SelectFieldSchema } from '../../../types/FormSchema';
 import { FieldProps } from 'formik';
 
 

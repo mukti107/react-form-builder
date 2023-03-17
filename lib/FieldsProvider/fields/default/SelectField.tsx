@@ -1,6 +1,6 @@
 import React from 'react';
 import {map} from 'lodash';
-import { SelectFieldSchema } from '../../types/FormSchema';
+import { SelectFieldSchema } from '../../../types/FormSchema';
 import { FieldProps } from 'formik';
 
 

@@ -1,7 +1,7 @@
 import { FieldProps } from 'formik';
 import { map, get, includes, union, without } from 'lodash';
 import React, { MouseEventHandler, useCallback } from 'react';
-import { ImageSelectFieldSchema } from '../../types/FormSchema';
+import { ImageSelectFieldSchema } from '../../../types/FormSchema';
 
 
 const ImageSelectField: React.FunctionComponent<ImageSelectFieldSchema & FieldProps> = (props) => {

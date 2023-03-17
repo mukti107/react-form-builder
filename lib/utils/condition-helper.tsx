@@ -1,6 +1,6 @@
 import { endsWith, every, get, includes, isEmpty, isArray, isBoolean, some, startsWith } from 'lodash';
 
-export type Predicate = '='|'!='|'<'|'>'|'isIn'|'isNotIn'|'contains'|'startsWith'|'endsWith'| 'contains' | 'doesNotContain';
+export type Predicate = '='|'!='|'<'|'>'|'isOneOf'|'isIn'|'isNotOneOf'|'isNotIn'|'contains'|'startsWith'|'endsWith'| 'contains' | 'doesNotContain';
 
 export type ConditionMatchType = 'all'|'none'|'any';
 
@@ -53,11 +53,15 @@ function _checkCondition(object: any, condition: SimpleCondition): boolean {
     case 'endsWith':
       return endsWith(currentValue, value);
     case 'contains':
+      return includes(currentValue, value);
+    case 'doesNotContain':
+      return !includes(currentValue, value);
+    case 'isOneOf':
     case 'isIn':
       return includes(value, currentValue);
-    case 'doesNotContain':
+    case 'isNotOneOf':
     case 'isNotIn':
-      return !(includes(value, currentValue));
+      return !includes(value, currentValue);
     default:
       return false
   }

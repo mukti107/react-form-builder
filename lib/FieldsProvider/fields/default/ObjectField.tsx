@@ -1,7 +1,7 @@
 import { FieldProps } from 'formik';
 import React from 'react';
-import FormGenerator from '..';
-import { ObjectFieldSchema } from '../../types/FormSchema';
+import FormGenerator from '../../..';
+import { ObjectFieldSchema } from '../../../types/FormSchema';
 
 
 const ObjectField: React.FunctionComponent<ObjectFieldSchema & FieldProps> = (props) => {
